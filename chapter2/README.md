@@ -1,4 +1,4 @@
-# Chapter 1
+# Chapter 2
 ---
 The directory contains code files from chapter 2.
 
