@@ -1,0 +1,6 @@
+DEBUG = False
+SECRET_KEY = 'jeeur393*###UF#u38920232&#&(jsk2928'
+BCRYPT_LOG_ROUNDS = 5
+SQLALCHEMY_DATABASE_URI = 'sqlite:///todo_service.db'
+SQLALCHEMY_ECHO = False
+USER_SERVICE_ENDPOINT = 'http://localhost:5000'

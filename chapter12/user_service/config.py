@@ -1,0 +1,5 @@
+DEBUG = True
+SECRET_KEY = 'du373r3uie3yf3@U#^$*EU9373^#'
+BCRYPT_LOG_ROUNDS = 5
+SQLALCHEMY_DATABASE_URI = 'sqlite:///user_service.db'
+SQLALCHEMY_ECHO = False
