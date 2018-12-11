@@ -16,6 +16,21 @@ db = SQLAlchemy(app)
 
 from user_service.models import User, Token
 
+def check_required_fields(req_fields, input_list):
+    """Check if the required fields are present or not in a given list.
+
+    Keyword arguments:
+    req_fields -- The list of fields required
+    input_list -- The input list to check for
+
+    Returns:
+        Boolean
+    """
+
+    if all(field in req_fields for field in input_list):
+        return True
+    return False
+
 @app.route('/ping', methods=['GET'])
 def ping():
     """Ping application route."""
@@ -25,9 +40,12 @@ def ping():
 def user_registration():
     """Handle the user registration."""
     
+    required_fields = ['username', 'email', 'password']
     response = {} # Initialize a response dictionary
     user_data = request.get_json()
-    if ['username', 'email', 'password'] not in user_data.keys():
+    print(user_data)
+    type(user_data)
+    if not check_required_fields(required_fields, user_data.keys()):
         response['message'] = "Required fields are missing"
         return jsonify(response), 400
 
@@ -51,9 +69,10 @@ def user_registration():
 def user_login():
     """Handle the user login."""
 
+    required_fields = ['username', 'password']
     response = {}
     user_data = request.get_json()
-    if ['username', 'password'] not in user_data.keys():
+    if not check_required_fields(required_fields, user_data.keys()):
         response['message'] = "Username or password is incorrect"
         return jsonify(response), 400
 
@@ -79,22 +98,23 @@ def user_login():
 def validate_token():
     """Handle the validation of the token."""
 
+    required_fields = ['auth_token']
     response = {}
     user_data = request.get_json()
 
-    if ['auth_token'] not in user_data.keys():
+    if not check_required_fields(required_fields, user_data.keys()):
         response['message'] = "Please provide a valid token"
         return jsonify(response), 400
 
     auth_token = user_data['auth_token']
-    token = Token.filter_by(auth_token=auth_token).first()
+    token = Token.query.filter_by(auth_token=auth_token).first()
 
     if token is None:
         response['message'] = "Invalid token provided"
         return jsonify(response), 400
 
     current_time = datetime.datetime.now()
-    if (current_time - token.token_timestamp) >= 3600:
+    if (current_time - token.token_timestamp).total_seconds() >= 3600:
         db.session.delete(token)
         try:
             db.session.commit()
@@ -105,7 +125,7 @@ def validate_token():
         return jsonify(response), 401
 
     # we have the token authenticated, return the user id
-    user = User.filter_by(id=token.user_id).first()
+    user = User.query.filter_by(id=token.user_id).first()
     user_id = user.id
     response['user_id'] = user_id
 

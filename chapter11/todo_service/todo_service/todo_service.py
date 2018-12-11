@@ -17,6 +17,21 @@ user_service = app.config['USER_SERVICE_ENDPOINT']
 
 from todo_service.models import List, Item
 
+def check_required_fields(req_fields, input_list):
+    """Check if the required fields are present inside the input list.
+
+    Keyword arguments:
+    req_fields -- The list of required fields
+    input_list -- The list to validate for required fields
+
+    Returns:
+        Boolean
+    """
+
+    if all(field in req_fields for field in input_list):
+        return True
+    return False
+
 @app.route('/ping', methods=['GET'])
 def ping():
     """Ping application route."""
@@ -45,9 +60,10 @@ def validate_user(auth_token):
 def new_list():
     """Handle the creation of new list."""
 
+    required_fields = ['auth_token', 'list_name']
     response = {}
     list_data = request.get_json()
-    if ['auth_token', 'list_name'] not in list_data.keys():
+    if not check_required_fields(required_fields, list_data.keys()):
         response['message'] = 'The required parameters are not provided'
         return jsonify(response), 400
 
@@ -77,10 +93,11 @@ def new_list():
 def add_item():
     """Handle the addition of new items to the list."""
 
+    required_fields = ['auth_token', 'list_name', 'items']
     response = {}
     list_data = request.get_json()
 
-    if ['auth_token', 'list_name', 'items'] not in list_data.keys():
+    if not check_required_fields(required_fields, list_data.keys()):
         response['message'] = "Required fields are missing"
         return jsonify(response), 400
 
@@ -124,10 +141,11 @@ def add_item():
 def view_list():
     """Handle the display of the todo list."""
 
+    required_fields = ['auth_token', 'list_name']
     response = {}
     list_data = request.get_json()
 
-    if ['auth_token', 'list_name'] not in list_data.keys():
+    if not check_required_fields(required_fields, list_data.keys()):
         response['message'] = "Required fields are missing"
         return jsonify(response), 400
 
