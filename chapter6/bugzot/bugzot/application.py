@@ -9,7 +9,7 @@ from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
 
 # Initialize our Flask application
-app = Flask(__name__, instance_relative_config=True, instance_path='/home/sbadhwar/book_example/Hands-On-Enterprise-Application-Development-with-Python/chapter6/bugzot/instance')
+app = Flask(__name__, instance_relative_config=True)
 
 # Let's read the configuration
 app.config.from_object('config')
