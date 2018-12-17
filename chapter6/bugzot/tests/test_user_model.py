@@ -11,9 +11,10 @@ from bugzot.models import User
 
 
 @pytest.fixture(scope='module')
-def new_user():
+def create_user():
     user = User(username='joe', password='Hello123', email='joe@gmail.com')
     return user
 
-def test_new_user(new_user):
-    assert new_user.email == 'joe@gmail.com'
+def test__user_creation(create_user):
+    assert create_user.email == 'joe@gmail.com'
+    assert create_user.username == 'joe'
