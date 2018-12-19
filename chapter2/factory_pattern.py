@@ -12,23 +12,23 @@ class HTMLFormEntity(ABC):
 class Button(HTMLFormEntity):
   def __init__(self, id, name):
     super().__init__(id, name)
-    self.type = “button”
+    self.type = "button"
   def render(self):
-    html = “<input id={idx} name={name} type={itype}” />
+    html = "<input id={idx} name={name} type={itype} />"
     return html.format(idx=self.id, name=self.name, itype=self.type)
 
 class Text(HTMLFormEntity):
   def __init__(self, id, name):
     super().__init__(id, name)
-    self.type = “text”
+    self.type = "text"
   def render(self):
-    html = “<input id={idx} name={name} type={itype}” />
+    html = "<input id={idx} name={name} type={itype} />"
     return html.format(idx=self.id, name=self.name, itype=self.type)
 
 class HTMLForm(HTMLFormEntity):
   __elements = {
-    “button”: Button,
-    “text”: Text
+    "button": Button,
+    "text": Text
   }
   def __init__(self, id, name, action, method):
     super().__init__(id, name)
@@ -40,3 +40,9 @@ class HTMLForm(HTMLFormEntity):
       self.elements.append(self.__elements[entity_type](id, name)) 
   def render(self):
     # render method body
+    pass
+
+if __name__ == '__main__':
+    form = HTMLForm("testform", "TestForm", "post.py", "POST")
+    form.add_entity("button", "button1", "submit")
+    form.add_entity("text", "username", "username")

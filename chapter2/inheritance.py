@@ -8,9 +8,9 @@ class Request:
 
   def get_request():
     request_data = {
-      ‘title’: self.title,
-      ‘description’: self.description
-      ‘is_private’: self.is_private
+      'title': self.title,
+      'description': self.description,
+      'is_private': self.is_private
     }
 
 class Bug(Request):
@@ -21,10 +21,10 @@ class Bug(Request):
 
   def get_bug():
     bug_data = {
-      ‘title’: self.title,
-      ‘description’: self.description,
-      ‘severity’: self.severity,
-      ‘affected_release’: self.affected_release,
-      ‘is_private’: self.is_private
+      'title': self.title,
+      'description': self.description,
+      'severity': self.severity,
+      'affected_release': self.affected_release,
+      'is_private': self.is_private
     }
     return bug_data
