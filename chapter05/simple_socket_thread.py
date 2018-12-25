@@ -30,6 +30,7 @@ class Server(object):
         """Start listening for the incoming connections."""
 
         self.server.listen(10) # Queue a maximum of 10 clients
+        print("Socket Server has started, press CTRL+C to exit...")
         #Enter the listening loop
         while True:
             client, client_addr = self.server.accept()
