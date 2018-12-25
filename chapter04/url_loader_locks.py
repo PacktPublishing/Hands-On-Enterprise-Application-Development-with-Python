@@ -10,11 +10,11 @@ def load_url(url, lock):
     url_handle.close()
     lock.acquire()
     with open("combinedhtml.txt", 'a+') as outfile:
-        outfile.write(url_data)
+        outfile.write(url_data.decode("utf-8"))
     lock.release()
 
 if __name__ == '__main__':
-    urls = ['http://www.w3c.org', 'http://www.google.com', 'http://www.microsoft.com', 'http://www.wikipedia.org']
+    urls = ['http://www.github.com', 'http://www.packtpub.com']
     lock = Lock()
     process_pool = []
     for url in urls:
