@@ -4,7 +4,7 @@ class SingletonMeta(type):
   _instance_registry = {}    #Build an instance registry which tracks the different class objects
   def __call__(cls, *args, **kwargs):
     if cls not in cls._instance_registry:    # check, if the class has already been instantiated
-      cls._instance_registry[cls] = super().__init__(*args, **kwargs)
+      cls._instance_registry[cls] = super().__call__(*args, **kwargs)
     return cls._instance_registry[cls]
 
 class Database(metaclass=SingletonMeta):
