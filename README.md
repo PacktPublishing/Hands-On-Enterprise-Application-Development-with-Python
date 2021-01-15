@@ -1,8 +1,3 @@
-## $5 Tech Unlocked 2021!
-[Buy and download this Book for only $5 on PacktPub.com](https://www.packtpub.com/product/hands-on-enterprise-application-development-with-python/9781789532364)
------
-*If you have read this book, please leave a review on [Amazon.com](https://www.amazon.com/gp/product/1789532361).     Potential readers can then use your unbiased opinion to help them make purchase decisions. Thank you. The $5 campaign         runs from __December 15th 2020__ to __January 13th 2021.__*
-
 # Hands-On Enterprise Application Development with Python
 
 <a href="https://www.packtpub.com/application-development/hands-enterprise-application-development-python?utm_source=github&utm_medium=repository&utm_campaign=9781789532364 "><img src="https://www.packtpub.com/media/catalog/product/cache/bf3310292d6e1b4ca15aeea773aca35e/9/7/978178953236420-20copy_0.png" alt="Hands-On Enterprise Application Development with Python" height="256px" align="right"></a>
