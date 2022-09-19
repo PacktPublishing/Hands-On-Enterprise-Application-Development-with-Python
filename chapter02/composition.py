@@ -17,7 +17,7 @@ class WatchDog:
     self.message_handler = message_handler
     self.debug = debug
 
-  def new_message(message, message_code, message_type):
+  def new_message(self,message, message_code, message_type):
     try:
       msg = self.message_handler.new_message(message, message_code, message_type)
     except Exception:
