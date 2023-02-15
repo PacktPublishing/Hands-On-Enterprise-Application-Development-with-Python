@@ -11,4 +11,4 @@ pkg-resources==0.0.0
 requests==2.20.1
 SQLAlchemy==1.2.14
 urllib3==1.24.1
-Werkzeug==0.14.1
+Werkzeug==2.2.3
