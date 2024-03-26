@@ -6,7 +6,7 @@ class Request:
     self.description = description
     self.is_private = is_private
 
-  def get_request():
+  def get_request(self):
     request_data = {
       'title': self.title,
       'description': self.description,
@@ -19,7 +19,7 @@ class Bug(Request):
     self.severity = severity
     super().__init__(title, description, is_private)
 
-  def get_bug():
+  def get_bug(self):
     bug_data = {
       'title': self.title,
       'description': self.description,
